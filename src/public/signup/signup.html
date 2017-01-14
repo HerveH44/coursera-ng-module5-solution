@@ -1,0 +1,67 @@
+<!--
+  Include stylesheet specific to the assignment
+-->
+<link rel="stylesheet" href="css/assignment.css">
+
+<div class="container">
+    <fieldset ng-if="!SignUpCtrl.completed">
+        <legend id="signup-legend">Signing up for the newsletter</legend>
+        <form name='regForm' novalidate>
+
+          <!-- First Name  -->
+           <div class="form-group">
+             <label for="nameInput">Name</label>
+             <input class="form-control" id="nameInput" type="text" name="name" placeholder="First name" ng-model="SignUpCtrl.user.name" required minlength="1">
+             <span ng-if="(regForm.name.$error.minlength || regForm.name.$error.required) && regForm.name.$touched">
+               No name detected.
+             </span>
+           </div>
+
+            <!-- Last Name -->
+            <div class="form-group">
+              <label for="lastnameInput">Last name</label>
+              <input class="form-control" id="lastnameInput" type="text" name="fullname" placeholder="Last name" ng-model="SignUpCtrl.user.fullname" required minlength="1">
+              <span ng-if="(regForm.fullname.$error.minlength || regForm.fullname.$error.required) && regForm.fullname.$touched">
+                  No Last name detected.
+              </span>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input class="form-control" id="email" type="email" name="email" placeholder="Email" ng-model="SignUpCtrl.user.email" required>
+            <span ng-if="regForm.email.$invalid && regForm.email.$touched">
+                Must be a valid email address: handle@domain format
+            </span>
+          </div>
+
+          <!-- Phone -->
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input class="form-control" id="phone" type="text" name="phone" placeholder="Phone ###-###-####" ng-model="SignUpCtrl.user.phone" pattern="(\d{3})-(\d{3})-(\d{4})">
+            <span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+                Phone must be in the format ###-###-####.
+            </span>
+          </div>
+
+          <!-- Menu Favorite Dish -->
+          <div class="form-group">
+            <label for="menuFavDish">Menu Favorite Dish</label>
+            <input class="form-control" id="menuFavDish" type="text" name="menuFavDish" placeholder="Menu Favorite Dish" ng-model="SignUpCtrl.user.dish" required minlength="1">
+            <span ng-if="regForm.menuFavDish.$invalid && regForm.menuFavDish.$touched">
+                  No Favorite dish detected.
+            </span>
+            <div class="alert alert-danger fade in" ng-if="SignUpCtrl.error">
+              No such menu number exists
+            </div>
+          </div>
+
+            <button class="btn btn-primary" ng-disabled="regForm.$invalid" ng-click="SignUpCtrl.submit()">Submit</button>
+        </form>
+    </fieldset>
+
+    <!-- Info de validation du formulaire  -->
+    <div id="info" class="alert alert-success fade in" ng-if="SignUpCtrl.completed">
+      Your information has been saved
+    </div>
+</div>

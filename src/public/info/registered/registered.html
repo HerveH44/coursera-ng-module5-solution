@@ -1,0 +1,21 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{$ctrl.user.name}}</td>
+        <td>{{$ctrl.user.fullname}}</td>
+        <td>{{$ctrl.user.email}}</td>
+        <td>{{$ctrl.user.phone}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <menu-item menu-item="$ctrl.menuItem"></menu-item>
+</div>
