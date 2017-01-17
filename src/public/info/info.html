@@ -1,6 +1,4 @@
 <div class="container">
-  <div ng-if="infoCtrl.noUser">
-    Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a>
-  </div>
+  <div ng-if="infoCtrl.noUser">Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a></div>
   <registered ng-if="!infoCtrl.noUser" user="infoCtrl.user" menu-item="infoCtrl.menuItem"></registered>
 </div>
